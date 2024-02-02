@@ -83,7 +83,7 @@ const DSAExport = () => {
                                     className="form-control"
                                     name="zone"
                                     onChange={searchQueryChangeHandler}
-                                    required
+                                    // required
                                 >
                                     <option hidden></option>
                                     {filterOption?.dsa?.zoneDis?.map((zone, idx) => (
