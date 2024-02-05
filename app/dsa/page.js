@@ -8,6 +8,10 @@ import usePricePeggingHook from '@/hooks/usePricePeggingHook';
 import pageRoutes from '@/utils/pageRoutes';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import nextConfig from '@/next.config';
+
+const baseUrl = process.env.BASE_URL;
+
 
 function formatToTwoDecimalPlaces(number) {
     number = number * 1
@@ -147,7 +151,8 @@ const DSAExport = () => {
                 <div className="container mt-3">
                     <label>Download Report :</label>
                     <div className='report-download-btns'>
-                        {["R", "G", "Y"].map((d, idx) => <button className='btn btn-primary' key={`report_flag__${idx}`} onClick={() => fetchDSAReport(d)}>Flag : {d} report</button>)}
+                        {/* {["R", "G", "Y"].map((d, idx) => <button className='btn btn-primary' key={`report_flag__${idx}`} onClick={() => fetchDSAReport(d)}>Flag : {d} report</button>)} */}
+                        {["R", "G", "Y","All"].map((d, idx) => <a className='btn btn-primary' href={`${baseUrl}/invokeDsaReport/${d}`} key={idx}>Flag: { d } Report</a>)}
 
                     </div>
                 </div>
