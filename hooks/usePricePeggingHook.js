@@ -16,7 +16,7 @@ const searchQueryInitialState = {
 
 const usePricePeggingHook = () => {
     const { snackbar } = snackbarHooks()
-    
+
     const fileInputRef = useRef(null);
 
     const [searchQuery, setSearchQuery] = useState({ ...searchQueryInitialState })
@@ -24,7 +24,10 @@ const usePricePeggingHook = () => {
         file: [],
         error: ""
     })
-    const [pricePegging, setPricePegging] = useState({})
+    const [pricePegging, setPricePegging] = useState({
+        totalCount: 0,
+
+    })
     const [filterOption, setFilterOptions] = useState({})
     const [trends, setTrends] = useState({
         data: [],
@@ -98,7 +101,9 @@ const usePricePeggingHook = () => {
             } else {
                 setPricePegging({
                     data: data.pricePeggingList.slice(0, 1000),
-                    error: ""
+                    error: "",
+                    totalCount: data.totalCount,
+
                 });
             }
 
@@ -174,6 +179,9 @@ const usePricePeggingHook = () => {
             errorHandler(error)
         }
     };
+    const resetPricepeggingFormState = () => {
+        setSearchQuery({ ...searchQueryInitialState })
+    }
 
 
 
@@ -184,7 +192,7 @@ const usePricePeggingHook = () => {
         fetchPricePeggingChatData,
         uploadFile, fileInputRef, uploadFileChangeHandler, uploadPricePeggingFile,
         fetchPricePegging, fetchAllFilterOptions,
-        trends, fetchPricePeggingTrends
+        trends, fetchPricePeggingTrends, resetPricepeggingFormState
     })
 }
 export default usePricePeggingHook

@@ -25,6 +25,7 @@ const PricePegging = () => {
     searchQueryChangeHandler,
     fetchPricePegging,
     fetchAllFilterOptions,
+    resetPricepeggingFormState,
   } = usePricePeggingHook();
 
   const [showTrend, setShowTrend] = useState({ ...initialShowTrendChartState })
@@ -143,7 +144,7 @@ const PricePegging = () => {
               <div className="col-md-3">
                 <div className="row">
                   <div className="col-md-6">
-                    <button className="btn btn-primary" type="reset">
+                    <button className="btn btn-primary" type="reset" onClick={resetPricepeggingFormState}>
                       Reset
                     </button>
                   </div>
@@ -171,6 +172,7 @@ const PricePegging = () => {
           />
           {pricePegging?.data?.length > 0 ? (
             <div className="table-responsive mt-4">
+              <p>Total Count: {pricePegging.totalCount}</p>
               <table className="table table-hover">
                 <thead>
                   <tr>

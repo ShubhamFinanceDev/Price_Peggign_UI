@@ -34,7 +34,7 @@ const initialShowLocationState = {
 const DSAExport = () => {
 
     const { filterOption, fetchAllFilterOptions } = usePricePeggingHook();
-    const { dsaList, uploadFile, fileInputRef, uploadFileChangeHandler, uploadDSAFile, searchQueryChangeHandler, fetchDsaList, fetchDSAReport } = useDSAHook()
+    const { dsaList, uploadFile, fileInputRef, uploadFileChangeHandler, uploadDSAFile, searchQueryChangeHandler, fetchDsaList, fetchDSAReport, resetDSAFormState } = useDSAHook()
     const [showLocation, setShowLocation] = useState({ ...initialShowLocationState })
 
     const showLocationModel = async (data) => {
@@ -139,7 +139,7 @@ const DSAExport = () => {
                         <div className="row mt-3">
                             <div className="col-md-8"></div>
                             <div className="col-md-2">
-                                <button className="btn btn-primary" type="reset">
+                                <button className="btn btn-primary" type="reset" onClick={resetDSAFormState}>
                                     Reset
                                 </button>
                             </div>
@@ -177,8 +177,8 @@ const DSAExport = () => {
                     />
                     {dsaList?.data?.length > 0 ? (
                         <div className="table-responsive mt-4">
+                            <p>Total Count: {dsaList.totalCount}</p>
                             <table className="table table-hover">
-
                                 <thead>
                                     <tr>
                                         <th>S/N</th>
@@ -220,6 +220,7 @@ const DSAExport = () => {
                                                 <td>{formatToTwoDecimalPlaces(lattitude)}</td>
                                                 <td>{formatToTwoDecimalPlaces(longitude)}</td>
                                                 <td><button className="btn btn-primary" onClick={() => showLocationModel({ lattitude, longitude, location: property_address })}>Location</button></td>
+
                                             </tr>
                                         )
                                     })}

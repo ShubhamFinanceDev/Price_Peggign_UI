@@ -20,7 +20,8 @@ const useDSAHook = () => {
     })
     const [dsaList, setDsaList] = useState({
         data: [],
-        error: ""
+        error: "",
+        totalCount: 0,
     })
 
     const searchQueryChangeHandler = (e) => {
@@ -100,6 +101,7 @@ const useDSAHook = () => {
             } else {
                 setDsaList({
                     data: data.dsaExportList,
+                    totalCount: data.totalCount,
                     error: ""
                 });
             }
@@ -107,11 +109,17 @@ const useDSAHook = () => {
             errorHandler(error)
         }
     };
+
+    const resetDSAFormState = () => {
+        setSearchQuery({ ...searchQueryInitialState })
+    }
+
     return ({
         dsaList,
         searchQuery, fileInputRef, searchQueryChangeHandler,
         uploadFile, uploadFileChangeHandler, uploadDSAFile,
-        fetchDsaList, fetchDSAReport
+        fetchDsaList, fetchDSAReport,
+        resetDSAFormState
     })
 }
 
