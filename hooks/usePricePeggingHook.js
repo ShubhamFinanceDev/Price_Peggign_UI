@@ -164,8 +164,8 @@ const usePricePeggingHook = () => {
             if (data.code === "1111") {
                 setTrends({
                     data: [],
-                    error: data.msg,
-                    status: "error"
+                    error: "",
+                    status: "fulfilled"
                 });
             } else {
                 setTrends({
