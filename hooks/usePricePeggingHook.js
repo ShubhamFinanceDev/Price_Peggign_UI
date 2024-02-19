@@ -100,7 +100,8 @@ const usePricePeggingHook = () => {
                 });
             } else {
                 setPricePegging({
-                    data: data.pricePeggingList.slice(0, 1000),
+                    // data: data.pricePeggingList.slice(0, 1000),
+                    data: data.pricePeggingList,
                     error: "",
                     totalCount: data.totalCount,
 
