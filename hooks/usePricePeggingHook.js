@@ -4,6 +4,7 @@ import API from "@/services/endpoints";
 import errorHandler from "@/utils/handler.utils";
 import pageRoutes from "@/utils/pageRoutes";
 import snackbarHooks from "@/hooks/snackbarHooks";
+import { useRef } from "react";
 
 
 const searchQueryInitialState = {
@@ -15,6 +16,9 @@ const searchQueryInitialState = {
 
 const usePricePeggingHook = () => {
     const { snackbar } = snackbarHooks()
+    
+    const fileInputRef = useRef(null);
+
     const [searchQuery, setSearchQuery] = useState({ ...searchQueryInitialState })
     const [uploadFile, setUploadFile] = useState({
         file: [],
@@ -131,9 +135,14 @@ const usePricePeggingHook = () => {
             })
             snackbar(data.msg)
 
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+
         } catch (error) {
             errorHandler(error)
         }
+
     };
 
 
@@ -173,7 +182,7 @@ const usePricePeggingHook = () => {
         pricePegging, filterOption,
         searchQuery, searchQueryChangeHandler,
         fetchPricePeggingChatData,
-        uploadFile, uploadFileChangeHandler, uploadPricePeggingFile,
+        uploadFile, fileInputRef, uploadFileChangeHandler, uploadPricePeggingFile,
         fetchPricePegging, fetchAllFilterOptions,
         trends, fetchPricePeggingTrends
     })

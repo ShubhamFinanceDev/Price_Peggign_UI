@@ -3,6 +3,7 @@ import axios from "@/services/axios";
 import API from "@/services/endpoints";
 import errorHandler from "@/utils/handler.utils";
 import snackbarHooks from "@/hooks/snackbarHooks";
+import { useRef } from "react";
 
 const searchQueryInitialState = {
     zone: null,
@@ -28,6 +29,8 @@ const useDSAHook = () => {
         prevState[name] = value;
         setSearchQuery(prevState);
     }
+
+    const fileInputRef = useRef(null);
 
     const uploadFileChangeHandler = (e) => {
         const { name, value, files } = e.target;
@@ -65,6 +68,11 @@ const useDSAHook = () => {
             })
             snackbar(data.msg)
 
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+
+
         } catch (error) {
             errorHandler(error)
         }
@@ -101,7 +109,7 @@ const useDSAHook = () => {
     };
     return ({
         dsaList,
-        searchQuery, searchQueryChangeHandler,
+        searchQuery, fileInputRef, searchQueryChangeHandler,
         uploadFile, uploadFileChangeHandler, uploadDSAFile,
         fetchDsaList, fetchDSAReport
     })

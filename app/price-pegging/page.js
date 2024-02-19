@@ -18,6 +18,7 @@ const PricePegging = () => {
     filterOption,
     searchQuery,
     uploadFile,
+    fileInputRef,
     fetchPricePeggingChatData,
     uploadFileChangeHandler,
     uploadPricePeggingFile,
@@ -57,6 +58,7 @@ const PricePegging = () => {
                   name="file"
                   className="form-control"
                   required
+                  ref={fileInputRef}
                   onChange={uploadFileChangeHandler}
                   accept=".xlsx"
                 />
@@ -84,6 +86,22 @@ const PricePegging = () => {
           <form className="row align-items-end" onSubmit={fetchPricePegging}>
             <div className="row">
               <div className="col-md-3">
+                <label>Region</label>
+                <select
+                  className="form-control"
+                  name="region"
+                  onChange={searchQueryChangeHandler}
+                >
+                  <option hidden></option>
+                  {filterOption?.pegging?.region?.map((region, idx) => (
+                    <option value={region} key={`region_sn__${idx}`}>
+                      {region}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="col-md-3">
                 <label>
                   Zone/District <span className="red-asterisk">*</span>
                 </label>
@@ -97,21 +115,6 @@ const PricePegging = () => {
                   {filterOption?.pegging?.zoneDis?.map((zone, idx) => (
                     <option value={zone} key={`zone_sn__${idx}`}>
                       {zone}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="col-md-3">
-                <label>Region</label>
-                <select
-                  className="form-control"
-                  name="region"
-                  onChange={searchQueryChangeHandler}
-                >
-                  <option hidden></option>
-                  {filterOption?.pegging?.region?.map((region, idx) => (
-                    <option value={region} key={`region_sn__${idx}`}>
-                      {region}
                     </option>
                   ))}
                 </select>
@@ -140,9 +143,9 @@ const PricePegging = () => {
               <div className="col-md-3">
                 <div className="row">
                   <div className="col-md-6">
-                    {/* <button className="btn btn-primary" type="submit">
-                      Search
-                    </button> */}
+                    <button className="btn btn-primary" type="reset">
+                      Reset
+                    </button>
                   </div>
                   <div className="col-md-6">
                     <button className="btn btn-primary" onClick={fetchPricePegging}>

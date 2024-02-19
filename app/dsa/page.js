@@ -34,7 +34,7 @@ const initialShowLocationState = {
 const DSAExport = () => {
 
     const { filterOption, fetchAllFilterOptions } = usePricePeggingHook();
-    const { dsaList, uploadFile, uploadFileChangeHandler, uploadDSAFile, searchQueryChangeHandler, fetchDsaList, fetchDSAReport } = useDSAHook()
+    const { dsaList, uploadFile, fileInputRef, uploadFileChangeHandler, uploadDSAFile, searchQueryChangeHandler, fetchDsaList, fetchDSAReport } = useDSAHook()
     const [showLocation, setShowLocation] = useState({ ...initialShowLocationState })
 
     const showLocationModel = async (data) => {
@@ -66,7 +66,7 @@ const DSAExport = () => {
                         <div className='row align-items-end px-2'>
                             <div className="col-md-10">
                                 <label >Upload DSA File</label>
-                                <input type="file" name="file" className='form-control' accept=".xlsx" required onChange={uploadFileChangeHandler} />
+                                <input type="file" name="file" className='form-control' accept=".xlsx" ref={fileInputRef} required onChange={uploadFileChangeHandler} />
                             </div>
                             <div className="col-md-2">
                                 <button className='btn btn-primary' type='submit' disabled={!uploadFile?.file?.[0]}>Upload</button>
@@ -79,24 +79,6 @@ const DSAExport = () => {
                 <div className="container mt-3">
                     <form className="row align-items-end" onSubmit={fetchDsaList}>
                         <div className="row">
-                            <div className="col-md-3">
-                                <label>
-                                    Zone/District <span className="red-asterisk">*</span>
-                                </label>
-                                <select
-                                    className="form-control"
-                                    name="zone"
-                                    onChange={searchQueryChangeHandler}
-                                    // required
-                                >
-                                    <option hidden></option>
-                                    {filterOption?.dsa?.zoneDis?.map((zone, idx) => (
-                                        <option value={zone} key={`zone_sn__${idx}`}>
-                                            {zone}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
                             <div className="col-md-3">
                                 <label>Region</label>
                                 <select
@@ -112,6 +94,25 @@ const DSAExport = () => {
                                     ))}
                                 </select>
                             </div>
+                            <div className="col-md-3">
+                                <label>
+                                    Zone/District <span className="red-asterisk">*</span>
+                                </label>
+                                <select
+                                    className="form-control"
+                                    name="zone"
+                                    onChange={searchQueryChangeHandler}
+                                // required
+                                >
+                                    <option hidden></option>
+                                    {filterOption?.dsa?.zoneDis?.map((zone, idx) => (
+                                        <option value={zone} key={`zone_sn__${idx}`}>
+                                            {zone}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
                             <div className="col-md-2">
                                 <label >Application Number</label>
                                 <input type="text" className='form-control' name="application_no" onChange={searchQueryChangeHandler} />
@@ -136,7 +137,12 @@ const DSAExport = () => {
                             </div>
                         </div>
                         <div className="row mt-3">
-                            <div className="col-md-10"></div>
+                            <div className="col-md-8"></div>
+                            <div className="col-md-2">
+                                <button className="btn btn-primary" type="reset">
+                                    Reset
+                                </button>
+                            </div>
                             <div className="col-md-2">
                                 <button className="btn btn-primary" type="submit">
                                     Search
@@ -152,7 +158,7 @@ const DSAExport = () => {
                     <label>Download Report :</label>
                     <div className='report-download-btns'>
                         {/* {["R", "G", "Y"].map((d, idx) => <button className='btn btn-primary' key={`report_flag__${idx}`} onClick={() => fetchDSAReport(d)}>Flag : {d} report</button>)} */}
-                        {["R", "G", "Y","All"].map((d, idx) => <a className='btn btn-primary' href={`${baseUrl}/invokeDsaReport/${d}`} key={idx}>Flag: { d } Report</a>)}
+                        {["R", "G", "Y", "All"].map((d, idx) => <a className='btn btn-primary' href={`${baseUrl}/invokeDsaReport/${d}`} key={idx}>Flag: {d} Report</a>)}
 
                     </div>
                 </div>
