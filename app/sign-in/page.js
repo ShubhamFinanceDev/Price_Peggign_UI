@@ -57,7 +57,7 @@ const SignIn = () => {
 
                         <Link href="/sign-up">
                             <button className={`btn w-100 mt-3`}>
-                                Don't have an account? Sign Up
+                                Don&apos;t have an account? Sign Up
                             </button>
                         </Link>
 
