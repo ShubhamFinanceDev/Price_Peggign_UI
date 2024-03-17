@@ -31,15 +31,17 @@ const API = {
         post: () => `/dsaExportUpload`,
     },
     pricePegging: {
-        get: (options) => {
+        get: (options, page =1) => {
             let queryParams = [];
             for (const [k, v] of Object.entries(options)) {
                 if (v != null) {
+                    console.log("key"+k);
                     queryParams.push(`${opt[k]}=${v}`);
                 }
             }
-            let queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-            return `pricePeggingData${queryString}`
+            let queryString = queryParams.length > 0 ? `&${queryParams.join('&')}` : '';
+           console.log("Qstring"+queryParams.length)
+            return `pricePeggingData?pageNo=${page}${queryString}`
         },
         post: () => `/pricePeggingUpload`,
     },

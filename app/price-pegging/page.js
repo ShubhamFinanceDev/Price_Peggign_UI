@@ -5,6 +5,7 @@ import withAuth from "@/hoc/withAuth";
 import usePricePeggingHook from "@/hooks/usePricePeggingHook";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Pagination from "@/components/core/Pagination";
 
 const initialShowTrendChartState = {
   show: false,
@@ -171,8 +172,9 @@ const PricePegging = () => {
             options={{ ...showTrend, handleClose: closeTrendChart }}
           />
           {pricePegging?.data?.length > 0 ? (
+            <>
             <div className="table-responsive mt-4">
-              <p>Total Count: {pricePegging.totalCount}</p>
+              <p>Total Count: {pricePegging?.meta?.totalCount}</p>
               <table className="table table-hover">
                 <thead>
                   <tr>
@@ -219,6 +221,8 @@ const PricePegging = () => {
                 </tbody>
               </table>
             </div>
+            <Pagination  meta={pricePegging.meta} next={fetchPricePegging} />
+            </>
           ) : null}
         </div>
       </div>

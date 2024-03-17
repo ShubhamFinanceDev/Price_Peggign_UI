@@ -12,10 +12,11 @@ const LineCharts = ({ data = [], title = "" }) => {
                     data={data}
                     options={{
                         title: title || "",
-                        curveType: "function",
+                        curveType: "curveType",
                         tooltip: {
                             isHtml: true,
                         },
+                        pointsVisible: true,
                     }}
                     className={"line-chart"}
                 />
