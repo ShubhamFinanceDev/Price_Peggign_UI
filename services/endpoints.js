@@ -18,15 +18,15 @@ const API = {
         get: () => `/filterOption`
     },
     dsa: {
-        get: (options) => {
+        get: (options, page =1) => {
             let queryParams = [];
             for (const [k, v] of Object.entries(options)) {
                 if (v != null) {
                     queryParams.push(`${opt[k]}=${v}`);
                 }
             }
-            let queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-            return `/exportData${queryString}`
+            let queryString = queryParams.length > 0 ? `&${queryParams.join('&')}` : '';
+            return `/exportData?pageNo=${page}${queryString}`
         },
         post: () => `/dsaExportUpload`,
     },

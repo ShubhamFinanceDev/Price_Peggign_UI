@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=5000 next dev",
+    "dev": "set PORT=5000 & next dev",
     "build": "next build",
     "start": "PORT=5000 next start",
     "lint": "next lint"

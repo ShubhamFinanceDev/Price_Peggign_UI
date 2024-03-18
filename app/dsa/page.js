@@ -9,6 +9,7 @@ import pageRoutes from '@/utils/pageRoutes';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import nextConfig from '@/next.config';
+import Pagination from "@/components/core/Pagination";
 
 const baseUrl = process.env.BASE_URL;
 
@@ -120,7 +121,7 @@ const DSAExport = () => {
                             <div className="col-md-2">
                                 <label>From</label>
                                 <input
-                                    type="date"
+                                    type="date"  
                                     className="form-control"
                                     name="from_date"
                                     onChange={searchQueryChangeHandler}
@@ -176,25 +177,26 @@ const DSAExport = () => {
                         options={{ ...showLocation, handleClose: closeLocationModel }}
                     />
                     {dsaList?.data?.length > 0 ? (
+                        <>
                         <div className="table-responsive mt-4">
-                            <p>Total Count: {dsaList.totalCount}</p>
+                            <p>Total Count: {dsaList?.meta?.totalCount}</p>
                             <table className="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>S/N</th>
+                                        {/* <th>S/N</th> */}
                                         <th>Application No</th>
                                         <th>Product</th>
-                                        {/* <th>Disbursal Date</th> */}
+                                        <th>Disbursal Date</th>
                                         <th>Property Address</th>
-                                        <th>Property Pincode</th>
+                                        {/* <th>Property Pincode</th> */}
                                         <th>Region</th>
                                         <th>Zone-Distict</th>
-                                        <th>Location</th>
+                                        {/* <th>Location</th> */}
                                         <th>Rate Per Sqft</th>
                                         <th>Property Type</th>
-                                        <th>Lattitude</th>
+                                        {/* <th>Lattitude</th>
                                         <th>Longitude</th>
-                                        <th></th>
+                                        <th></th> */}
                                     </tr>
                                 </thead>
 
@@ -204,22 +206,22 @@ const DSAExport = () => {
                                         const { lattitude, longitude, location, property_address, flag = "" } = dsa
                                         return (
                                             <tr key={`dsa_list__sn__${idx}`} className={`line-clam-disable ${flag}`}>
-                                                <td scope="row">{idx + 1}</td>
+                                                {/* <td scope="row">{idx + 1}</td> */}
                                                 <td>{dsa.applicationNo}</td>
                                                 <td>{dsa.product}</td>
-                                                {/* <td>{dsa.disbursalDate}</td> */}
+                                                <td>{dsa.disbursal_date}</td>
                                                 <td>
                                                     <p className='webkit-line-clamp'>{property_address}</p>
                                                 </td>
-                                                <td>{dsa.propertyPincode}</td>
+                                                {/* <td>{dsa.propertyPincode}</td> */}
                                                 <td>{dsa.region}</td>
                                                 <td>{dsa.zone}</td>
-                                                <td><p className='webkit-line-clamp'>{location}</p></td>
+                                                {/* <td><p className='webkit-line-clamp'>{location}</p></td> */}
                                                 <td>{dsa.rate_per_sqft}</td>
                                                 <td>{dsa.property_type}</td>
-                                                <td>{formatToTwoDecimalPlaces(lattitude)}</td>
+                                                {/* <td>{formatToTwoDecimalPlaces(lattitude)}</td>
                                                 <td>{formatToTwoDecimalPlaces(longitude)}</td>
-                                                <td><button className="btn btn-primary" onClick={() => showLocationModel({ lattitude, longitude, location: property_address })}>Location</button></td>
+                                                <td><button className="btn btn-primary" onClick={() => showLocationModel({ lattitude, longitude, location: property_address })}>Location</button></td> */}
 
                                             </tr>
                                         )
@@ -228,6 +230,8 @@ const DSAExport = () => {
                                 </tbody>
                             </table>
                         </div>
+                                  <Pagination  meta={dsaList.meta} next={fetchDsaList} />
+                                  </>
                     ) : null}
 
                 </div>
