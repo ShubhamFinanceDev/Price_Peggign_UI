@@ -98,7 +98,7 @@ const useDSAHook = () => {
     const fetchDsaList = async (e, page = 1) => {
         e?.preventDefault()
         try {
-            const { data } = await axios.get(API.dsa.get(searchQuery), page);
+            const { data } = await axios.get(API.dsa.get({...searchQuery}, page));
             if (data.code === "1111") {
                 setDsaList({
                     data: [],
