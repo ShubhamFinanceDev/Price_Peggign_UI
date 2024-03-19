@@ -9,7 +9,8 @@ const searchQueryInitialState = {
     zone: null,
     region: null,
     application_no: null,
-    upload_date: null
+    upload_date: null,
+    pincode: null,
 }
 const useDSAHook = () => {
     const { snackbar } = snackbarHooks()
@@ -19,6 +20,12 @@ const useDSAHook = () => {
         error: ""
     })
     const [dsaList, setDsaList] = useState({
+        meta : {
+            nextPage : false,
+            currentPage : 1,
+            totalPageCount: 0,
+            totalCount : 0
+        },
         data: [],
         error: "",
         totalCount: 0,
@@ -89,20 +96,32 @@ const useDSAHook = () => {
     }
 
 
-    const fetchDsaList = async (e) => {
-        e.preventDefault()
+    const fetchDsaList = async (e, page = 1) => {
+        e?.preventDefault()
         try {
-            const { data } = await axios.get(API.dsa.get(searchQuery));
+            const { data } = await axios.get(API.dsa.get({...searchQuery}, page));
             if (data.code === "1111") {
                 setDsaList({
                     data: [],
+                    meta : {
+                        nextPage : false,
+                        currentPage : page,
+                        totalPageCount: 1,
+                        totalCount : 0
+                    },
                     error: data.msg
                 });
             } else {
                 setDsaList({
                     data: data.dsaExportList,
                     totalCount: data.totalCount,
-                    error: ""
+                    error: "",
+                    meta : {
+                        nextPage : data.nextPage,
+                        currentPage : page,
+                        totalPageCount: Math.ceil(data.totalCount / 100),
+                        totalCount : data.totalCount
+                    },
                 });
             }
         } catch (error) {

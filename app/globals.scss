@@ -459,10 +459,11 @@ td p {
   .webkit-line-clamp {
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     transition: -webkit-line-clamp 0.5s ease;
     color: black;
+    max-width: 200px;
   }
 
   &:hover {
@@ -549,4 +550,10 @@ td p {
 .report-download-btns {
   display: flex;
   gap: 0.5rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1rem 0;
 }

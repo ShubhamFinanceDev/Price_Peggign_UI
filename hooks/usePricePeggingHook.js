@@ -11,7 +11,8 @@ const searchQueryInitialState = {
     zone: null,
     region: null,
     from_date: null,
-    to_date: null
+    to_date: null,
+    pinCode: null,
 }
 
 const usePricePeggingHook = () => {
@@ -30,6 +31,12 @@ const usePricePeggingHook = () => {
     })
     const [filterOption, setFilterOptions] = useState({})
     const [trends, setTrends] = useState({
+        meta : {
+            nextPage : false,
+            currentPage : 1,
+            totalPageCount: 0,
+            totalCount : 0
+        },
         data: [],
         error: "",
         status: "ideal"
@@ -83,28 +90,37 @@ const usePricePeggingHook = () => {
         }
     };
 
-    const fetchPricePegging = async (e) => {
-        e.preventDefault()
+    const fetchPricePegging = async (e, page = 1) => {
+        e?.preventDefault()
         try {
             const { from_date, to_date } = searchQuery
             if (from_date != null && to_date == null || from_date == null && to_date != null) {
                 setPricePegging({ data: "", error: "Both From date and To date are required for date range search." });
                 return
             }
-            const { data } = await axios.get(API.pricePegging.get({ ...searchQuery }));
+            const { data } = await axios.get(API.pricePegging.get({ ...searchQuery }, page));
 
             if (data.code === "1111") {
                 setPricePegging({
                     data: [],
+                    meta : {
+                        nextPage : false,
+                        currentPage : page,
+                        totalPageCount: 1,
+                        totalCount : 0
+                    },
                     error: data.msg
                 });
             } else {
                 setPricePegging({
-                    // data: data.pricePeggingList.slice(0, 1000),
                     data: data.pricePeggingList,
                     error: "",
-                    totalCount: data.totalCount,
-
+                    meta : {
+                        nextPage : data.nextPage,
+                        currentPage : page,
+                        totalPageCount: Math.ceil(data.totalCount / 100),
+                        totalCount : data.totalCount
+                    },
                 });
             }
 

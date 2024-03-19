@@ -4,7 +4,8 @@ const opt = {
     from_date: "fromDate",
     to_date: "toDate",
     application_no: "applicationNo",
-    upload_date: "uploadDate"
+    upload_date: "uploadDate",
+    pincode: "pinCode"
 }
 
 const API = {
@@ -18,28 +19,30 @@ const API = {
         get: () => `/filterOption`
     },
     dsa: {
-        get: (options) => {
+        get: (options, page =1) => {
             let queryParams = [];
             for (const [k, v] of Object.entries(options)) {
-                if (v != null) {
+                if (v != null && v != "" ) {
                     queryParams.push(`${opt[k]}=${v}`);
                 }
             }
-            let queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-            return `/exportData${queryString}`
+            let queryString = queryParams.length > 0 ? `&${queryParams.join('&')}` : '';
+            return `/exportData?pageNo=${page}${queryString}`
         },
         post: () => `/dsaExportUpload`,
     },
     pricePegging: {
-        get: (options) => {
+        get: (options, page =1) => {
             let queryParams = [];
             for (const [k, v] of Object.entries(options)) {
-                if (v != null) {
+                if (v != null && v != "") {
+                    console.log("key"+k);
                     queryParams.push(`${opt[k]}=${v}`);
                 }
             }
-            let queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-            return `pricePeggingData${queryString}`
+            let queryString = queryParams.length > 0 ? `&${queryParams.join('&')}` : '';
+           console.log("Qstring"+queryParams.length)
+            return `pricePeggingData?pageNo=${page}${queryString}`
         },
         post: () => `/pricePeggingUpload`,
     },

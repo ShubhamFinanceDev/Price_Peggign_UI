@@ -5,6 +5,7 @@ import withAuth from "@/hoc/withAuth";
 import usePricePeggingHook from "@/hooks/usePricePeggingHook";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Pagination from "@/components/core/Pagination";
 
 const initialShowTrendChartState = {
   show: false,
@@ -120,7 +121,12 @@ const PricePegging = () => {
                   ))}
                 </select>
               </div>
-              <div className="col-md-3">
+              
+              <div className="col-md-2">
+                                <label >Pin code</label>
+                                <input type="text" className='form-control' name="pincode" onChange={searchQueryChangeHandler} />
+                            </div>
+              <div className="col-md-2">
                 <label>From</label>
                 <input
                   type="date"
@@ -129,7 +135,7 @@ const PricePegging = () => {
                   onChange={searchQueryChangeHandler}
                 />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-2">
                 <label>To</label>
                 <input
                   type="date"
@@ -171,8 +177,9 @@ const PricePegging = () => {
             options={{ ...showTrend, handleClose: closeTrendChart }}
           />
           {pricePegging?.data?.length > 0 ? (
+            <>
             <div className="table-responsive mt-4">
-              <p>Total Count: {pricePegging.totalCount}</p>
+              <p>Total Count: {pricePegging?.meta?.totalCount}</p>
               <table className="table table-hover">
                 <thead>
                   <tr>
@@ -219,6 +226,8 @@ const PricePegging = () => {
                 </tbody>
               </table>
             </div>
+            <Pagination  meta={pricePegging.meta} next={fetchPricePegging} />
+            </>
           ) : null}
         </div>
       </div>
