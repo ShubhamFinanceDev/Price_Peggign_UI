@@ -11,7 +11,8 @@ const searchQueryInitialState = {
     zone: null,
     region: null,
     from_date: null,
-    to_date: null
+    to_date: null,
+    pinCode: null,
 }
 
 const usePricePeggingHook = () => {

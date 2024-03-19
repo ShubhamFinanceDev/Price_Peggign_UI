@@ -9,7 +9,8 @@ const searchQueryInitialState = {
     zone: null,
     region: null,
     application_no: null,
-    upload_date: null
+    upload_date: null,
+    pincode: null,
 }
 const useDSAHook = () => {
     const { snackbar } = snackbarHooks()

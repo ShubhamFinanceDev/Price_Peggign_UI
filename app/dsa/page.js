@@ -80,7 +80,7 @@ const DSAExport = () => {
                 <div className="container mt-3">
                     <form className="row align-items-end" onSubmit={fetchDsaList}>
                         <div className="row">
-                            <div className="col-md-3">
+                            <div className="col-md-2">
                                 <label>Region</label>
                                 <select
                                     className="form-control"
@@ -95,7 +95,7 @@ const DSAExport = () => {
                                     ))}
                                 </select>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-2">
                                 <label>
                                     Zone/District <span className="red-asterisk">*</span>
                                 </label>
@@ -117,6 +117,10 @@ const DSAExport = () => {
                             <div className="col-md-2">
                                 <label >Application Number</label>
                                 <input type="text" className='form-control' name="application_no" onChange={searchQueryChangeHandler} />
+                            </div>
+                            <div className="col-md-2">
+                                <label >Pin code</label>
+                                <input type="text" className='form-control' name="pincode" onChange={searchQueryChangeHandler} />
                             </div>
                             <div className="col-md-2">
                                 <label>From</label>
@@ -188,7 +192,7 @@ const DSAExport = () => {
                                         <th>Product</th>
                                         <th>Disbursal Date</th>
                                         <th>Property Address</th>
-                                        {/* <th>Property Pincode</th> */}
+                                        <th>Property Pincode</th>
                                         <th>Region</th>
                                         <th>Zone-Distict</th>
                                         {/* <th>Location</th> */}
@@ -213,7 +217,7 @@ const DSAExport = () => {
                                                 <td>
                                                     <p className='webkit-line-clamp'>{property_address}</p>
                                                 </td>
-                                                {/* <td>{dsa.propertyPincode}</td> */}
+                                                <td>{dsa.propertyPincode}</td>
                                                 <td>{dsa.region}</td>
                                                 <td>{dsa.zone}</td>
                                                 {/* <td><p className='webkit-line-clamp'>{location}</p></td> */}

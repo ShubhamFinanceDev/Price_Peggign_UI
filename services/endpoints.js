@@ -4,7 +4,8 @@ const opt = {
     from_date: "fromDate",
     to_date: "toDate",
     application_no: "applicationNo",
-    upload_date: "uploadDate"
+    upload_date: "uploadDate",
+    pincode: "pinCode"
 }
 
 const API = {
@@ -21,7 +22,7 @@ const API = {
         get: (options, page =1) => {
             let queryParams = [];
             for (const [k, v] of Object.entries(options)) {
-                if (v != null) {
+                if (v != null && v != "" ) {
                     queryParams.push(`${opt[k]}=${v}`);
                 }
             }
@@ -34,7 +35,7 @@ const API = {
         get: (options, page =1) => {
             let queryParams = [];
             for (const [k, v] of Object.entries(options)) {
-                if (v != null) {
+                if (v != null && v != "") {
                     console.log("key"+k);
                     queryParams.push(`${opt[k]}=${v}`);
                 }

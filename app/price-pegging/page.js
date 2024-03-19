@@ -121,7 +121,12 @@ const PricePegging = () => {
                   ))}
                 </select>
               </div>
-              <div className="col-md-3">
+              
+              <div className="col-md-2">
+                                <label >Pin code</label>
+                                <input type="text" className='form-control' name="pincode" onChange={searchQueryChangeHandler} />
+                            </div>
+              <div className="col-md-2">
                 <label>From</label>
                 <input
                   type="date"
@@ -130,7 +135,7 @@ const PricePegging = () => {
                   onChange={searchQueryChangeHandler}
                 />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-2">
                 <label>To</label>
                 <input
                   type="date"
