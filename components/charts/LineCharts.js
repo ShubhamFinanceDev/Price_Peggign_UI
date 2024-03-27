@@ -1,31 +1,47 @@
-import React from "react";
-import { Chart } from "react-google-charts";
+import React, { useEffect } from 'react';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
 const LineCharts = ({ data = [], title = "" }) => {
-    if (data.length > 0) {
-        return (
-            <div>
-                <Chart
-                    chartType="LineChart"
-                    width="100%"
-                    height="400px"
-                    data={data}
-                    options={{
-                        title: title || "",
-                        curveType: "curveType",
-                        tooltip: {
-                            isHtml: true,
-                        },
-                        pointsVisible: true,
-                    }}
-                    className={"line-chart"}
-                />
-            </div>
-        )
-    } else {
-        return <></>
-    }
+  const categories = data.map((item) => item[0]); 
+  const seriesData = [
+    { name: 'Minimum', data: data.map((item) => item[1]) },
+    { name: 'Maximum', data: data.map((item) => item[2]) },
+    { name: 'Average', data: data.map((item) => item[3]) }
+  ];
 
-}
+  const options = {
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: title
+    },
+    xAxis: {
+      categories: categories,
+    },
+    yAxis: {
+      title: {
+        text: 'Values'
+      }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: seriesData
+  };
 
-export default LineCharts
+
+  return (
+    <div>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </div>
+  );
+};
+
+export default LineCharts;
