@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
 const LineCharts = ({ data = [], title = "" }) => {
-  const categories = data.map((item) => item[0]); 
+  const formattedData = data.slice(1);
+  const categories = formattedData.map((item) => item[0]); 
   const seriesData = [
-    { name: 'Minimum', data: data.map((item) => item[1]) },
-    { name: 'Maximum', data: data.map((item) => item[2]) },
-    { name: 'Average', data: data.map((item) => item[3]) }
+    { name: 'Minimum', data: formattedData.map((item) => item[1]) },
+    { name: 'Maximum', data: formattedData.map((item) => item[2]) },
+    { name: 'Average', data: formattedData.map((item) => item[3]) }
   ];
 
   const options = {
@@ -26,16 +27,15 @@ const LineCharts = ({ data = [], title = "" }) => {
       }
     },
     plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true
-            },
-            enableMouseTracking: false
-        }
+      line: {
+        dataLabels: {
+          enabled: true
+        },
+        enableMouseTracking: false
+      }
     },
     series: seriesData
   };
-
 
   return (
     <div>
