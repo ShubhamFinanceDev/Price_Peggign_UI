@@ -180,7 +180,7 @@ const PricePegging = () => {
             <>
             <div className="table-responsive mt-4">
               <p>Total Count: {pricePegging?.meta?.totalCount}</p>
-              <table className="table table-hover">
+              <table className="table table-hover table-bordered">
                 <thead>
                   <tr>
                     <th>S/N</th>

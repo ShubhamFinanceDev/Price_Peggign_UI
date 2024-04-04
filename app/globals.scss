@@ -403,6 +403,7 @@ form {
 .table {
   thead th {
     background-color: #015495 !important;
+    border: 1px solid black;
     color: white;
   }
 }
@@ -439,10 +440,12 @@ td p {
 
 .line-clam-disable {
   cursor: pointer;
+  border: 1px solid black;
+
 
   &.R {
     td {
-      background-color: rgb(236, 162, 162);
+      background-color:red;
     }
   }
   &.G {
@@ -556,4 +559,8 @@ td p {
   display: flex;
   justify-content: space-between;
   margin: 1rem 1rem 0;
+}
+
+.table-bordered > :not(caption) > * > * {
+  border: 1px solid black !important;
 }

@@ -184,7 +184,7 @@ const DSAExport = () => {
                         <>
                         <div className="table-responsive mt-4">
                             <p>Total Count: {dsaList?.meta?.totalCount}</p>
-                            <table className="table table-hover">
+                            <table className="table table-hover table-bordered">
                                 <thead>
                                     <tr>
                                         {/* <th>S/N</th> */}
