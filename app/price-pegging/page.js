@@ -127,6 +127,10 @@ const PricePegging = () => {
                                 <input type="text" className='form-control' name="pincode" onChange={searchQueryChangeHandler} />
                             </div>
               <div className="col-md-2">
+                                <label >Area</label>
+                                <input type="text" className='form-control' name="area" onChange={searchQueryChangeHandler} />
+                            </div>
+              <div className="col-md-2">
                 <label>From</label>
                 <input
                   type="date"
@@ -179,19 +183,19 @@ const PricePegging = () => {
           {pricePegging?.data?.length > 0 ? (
             <>
             <div className="table-responsive mt-4">
-              <p>Total Count: {pricePegging?.meta?.totalCount}</p>
+              <p className='black-font'>Total Count: {pricePegging?.meta?.totalCount}</p>
               <table className="table table-hover table-bordered">
                 <thead>
                   <tr>
                     <th>S/N</th>
                     <th>Region</th>
                     <th>Zone-District</th>
-                    <th>Locations</th>
+                    <th>Area</th>
                     <th>Minimum Rate</th>
                     <th>Maximum Rate</th>
                     <th>Average Rate</th>
                     <th>Pin Code</th>
-                    <th>Location</th>
+                    <th>Area</th>
                     <th></th>
                   </tr>
                 </thead>

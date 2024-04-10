@@ -140,6 +140,21 @@ const DSAExport = () => {
                                     onChange={searchQueryChangeHandler}
                                 />
                             </div>
+                                    <div className="col-md-2">
+    <label>Flag</label>
+    <select
+        className="form-control"
+        name="flag"
+        onChange={searchQueryChangeHandler}
+    >
+        <option hidden></option>
+        <option value="G">Green</option>
+        <option value="R">Red</option>
+        <option value="Y">Yellow</option>
+        <option value="B">Other</option>
+
+    </select>
+</div>
                         </div>
                         <div className="row mt-3">
                             <div className="col-md-8"></div>
@@ -183,7 +198,7 @@ const DSAExport = () => {
                     {dsaList?.data?.length > 0 ? (
                         <>
                         <div className="table-responsive mt-4">
-                            <p>Total Count: {dsaList?.meta?.totalCount}</p>
+                            <p className='black-font'>Total Count: {dsaList?.meta?.totalCount}</p>
                             <table className="table table-hover table-bordered">
                                 <thead>
                                     <tr>

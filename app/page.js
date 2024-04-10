@@ -38,18 +38,20 @@ import BarCharts from '@/components/charts/BarCharts';
 // ]
 
 const peggingDashboardMetrics = [
-  {
-    label: "Pincode",
-    icon: icons.USER_ICON,
-    key: "peggingPincodeTotal",
-  },
+  
   {
     label: "Zone",
     icon: icons.ZONE_ICON,
     key: "peggingZoneTotal"
   },
   {
-    label: "Locations",
+    label: "Pincode",
+    icon: icons.USER_ICON,
+    key: "peggingPincodeTotal",
+  },
+
+  {
+    label: "Area",
     icon: icons.FILE_ICON,
     key: "peggingLocationsTotal"
   },
