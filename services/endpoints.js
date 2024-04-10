@@ -5,7 +5,8 @@ const opt = {
     to_date: "toDate",
     application_no: "applicationNo",
     upload_date: "uploadDate",
-    pincode: "pinCode"
+    pincode: "pinCode",
+    flag: "flag"
 }
 
 const API = {

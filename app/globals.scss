@@ -564,3 +564,9 @@ td p {
 .table-bordered > :not(caption) > * > * {
   border: 1px solid black !important;
 }
+
+.black-font {
+  font-weight: 900;
+  color: black;
+
+}
