@@ -7,12 +7,15 @@ import snackbarHooks from "@/hooks/snackbarHooks";
 import { useRef } from "react";
 
 
+
 const searchQueryInitialState = {
     zone: null,
     region: null,
     from_date: null,
     to_date: null,
     pinCode: null,
+    area: null,
+
 }
 
 const usePricePeggingHook = () => {

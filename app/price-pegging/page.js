@@ -127,6 +127,10 @@ const PricePegging = () => {
                                 <input type="text" className='form-control' name="pincode" onChange={searchQueryChangeHandler} />
                             </div>
               <div className="col-md-2">
+                                <label >Area</label>
+                                <input type="text" className='form-control' name="area" onChange={searchQueryChangeHandler} />
+                            </div>
+              <div className="col-md-2">
                 <label>From</label>
                 <input
                   type="date"
