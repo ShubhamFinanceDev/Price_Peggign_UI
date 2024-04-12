@@ -87,7 +87,7 @@ const PricePegging = () => {
         <div className="container mt-3">
           <form className="row align-items-end" onSubmit={fetchPricePegging}>
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-md-2">
                 <label>Region</label>
                 <select
                   className="form-control"
@@ -103,7 +103,7 @@ const PricePegging = () => {
                 </select>
               </div>
 
-              <div className="col-md-3">
+              <div className="col-md-2">
                 <label>
                   Zone/District <span className="red-asterisk">*</span>
                 </label>

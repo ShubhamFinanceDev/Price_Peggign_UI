@@ -118,10 +118,25 @@ const DSAExport = () => {
                                 <label >Application Number</label>
                                 <input type="text" className='form-control' name="application_no" onChange={searchQueryChangeHandler} />
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-1">
                                 <label >Pin code</label>
                                 <input type="text" className='form-control' name="pincode" onChange={searchQueryChangeHandler} />
                             </div>
+                            <div className="col-md-1">
+    <label>Flag</label>
+    <select
+        className="form-control"
+        name="flag"
+        onChange={searchQueryChangeHandler}
+    >
+        <option hidden></option>
+        <option value="G">Green</option>
+        <option value="R">Red</option>
+        <option value="Y">Yellow</option>
+        <option value="B">Other</option>
+
+    </select>
+</div>
                             <div className="col-md-2">
                                 <label>From</label>
                                 <input
@@ -140,21 +155,7 @@ const DSAExport = () => {
                                     onChange={searchQueryChangeHandler}
                                 />
                             </div>
-                                    <div className="col-md-2">
-    <label>Flag</label>
-    <select
-        className="form-control"
-        name="flag"
-        onChange={searchQueryChangeHandler}
-    >
-        <option hidden></option>
-        <option value="G">Green</option>
-        <option value="R">Red</option>
-        <option value="Y">Yellow</option>
-        <option value="B">Other</option>
 
-    </select>
-</div>
                         </div>
                         <div className="row mt-3">
                             <div className="col-md-8"></div>

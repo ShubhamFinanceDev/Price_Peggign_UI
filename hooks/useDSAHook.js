@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "@/services/axios";
 import API from "@/services/endpoints";
+import Cookies from 'js-cookie'
 import errorHandler from "@/utils/handler.utils";
 import snackbarHooks from "@/hooks/snackbarHooks";
 import { useRef } from "react";
@@ -60,9 +61,10 @@ const useDSAHook = () => {
                     'Content-Type': 'multipart/form-data',
                 }
             }
-
+            const email = Cookies.get("email") || ""; 
             const formData = new FormData();
             formData.append('file', uploadFile.file[0]);
+            formData.append('uploadBy', email);
 
             const { data } = await axios.post(API.dsa.post(), formData, header);
 

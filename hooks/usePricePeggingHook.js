@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "@/services/axios";
 import API from "@/services/endpoints";
 import errorHandler from "@/utils/handler.utils";
+import Cookies from 'js-cookie'
 import pageRoutes from "@/utils/pageRoutes";
 import snackbarHooks from "@/hooks/snackbarHooks";
 import { useRef } from "react";
@@ -135,39 +136,42 @@ const usePricePeggingHook = () => {
     };
 
     const uploadPricePeggingFile = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            if (uploadFile.file.length < 0) { return }
+            if (uploadFile.file.length < 0) {
+                return;
+            }
             const header = {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
-            }
-
+            };
+            const email = Cookies.get("email") || ""; 
+    
             const formData = new FormData();
             formData.append('file', uploadFile.file[0]);
-
+            formData.append('uploadBy', email); 
+    
             const { data } = await axios.post(API.pricePegging.post(), formData, header);
-
+    
             if (data.code == "1111") {
-                setUploadFile(state => ({ ...state, error: data.msg }))
-                return
+                setUploadFile(state => ({ ...state, error: data.msg }));
+                return;
             }
-
+    
             setUploadFile({
                 file: [],
                 error: ""
-            })
-            snackbar(data.msg)
-
+            });
+            snackbar(data.msg);
+    
             if (fileInputRef.current) {
                 fileInputRef.current.value = '';
             }
-
+    
         } catch (error) {
-            errorHandler(error)
+            errorHandler(error);
         }
-
     };
 
 
