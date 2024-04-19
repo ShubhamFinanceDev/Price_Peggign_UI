@@ -14,9 +14,9 @@ const BarCharts = ({ data = [], title = "" }) => {
                         title: title || "",
                         legend: "none",
                         enableInteractivity: false,
-                         vAxis:{
-                            format:0
-                         }
+                        //  vAxis:{
+                        //     format:0
+                         //}
                     }}
                 />
             </div>
