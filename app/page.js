@@ -93,7 +93,7 @@ const Home = () => {
           <div className="col-12 col-md-12">
             <MetricsCard metricsHeading={"Price Pegging"} dashboardMetrics={peggingDashboardMetrics} metricsData={peggingData} />
             <BarCharts data={dashboardGraphCount?.data?.peggingData?.pincode || []} title="Price Pegging Pincode" />
-            <BarCharts data={dashboardGraphCount?.data?.peggingData?.location || []} title="Price Pegging Location" />
+            <BarCharts data={dashboardGraphCount?.data?.peggingData?.location || []} title="Price Pegging Area" />
 
           </div>
         </div>
