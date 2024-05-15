@@ -13,7 +13,7 @@ const BarCharts = ({ data = [], title = "" }) => {
                     options={{
                         title: title || "",
                         legend: "none",
-                        enableInteractivity: false,
+                        enableInteractivity: true,
                           vAxis:{
                             format:0
                          }

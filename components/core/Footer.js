@@ -3,11 +3,11 @@
 import React from 'react'
 
 const Footer = () => {
-    let year = new Date()
-
+    let date = new Date()
+    const year = date.getFullYear()
     return (
         <footer>
-            Copyright@{year.getFullYear()} Shubham Housing Finance. All Rights Reserved.
+            Copyright@{year} Shubham Housing Finance. All Rights Reserved.
         </footer>
     )
 }
