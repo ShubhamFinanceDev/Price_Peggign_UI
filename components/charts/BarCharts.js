@@ -18,7 +18,7 @@ const BarCharts = ({ data = [], title = "" }) => {
                             format: 0
                         },
                         bar: {
-                            groupWidth: "10%" // Adjust this value as needed to change the bar width
+                            groupWidth: "15%" // Adjust this value as needed to change the bar width
                         }
                     }}
                 />
