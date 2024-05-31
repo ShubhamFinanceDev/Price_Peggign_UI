@@ -16,7 +16,7 @@ const navItems = [
         href: pageRoutes.PRICE_PEGGING_PAGE()
     },
     {
-        name: "DSA",
+        name: "Collateral",
         href: pageRoutes.DSA_PAGE()
     },
 
