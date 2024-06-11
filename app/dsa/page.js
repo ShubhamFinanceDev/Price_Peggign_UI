@@ -241,8 +241,8 @@ const DSAExport = () => {
                                                 {/* <td><p className='webkit-line-clamp'>{location}</p></td> */}
                                                 <td>{dsa.rate_per_sqft}</td>
                                                 <td>{dsa.property_type}</td>
-                                                <td>{dsa.maximum_rate}</td>
                                                 <td>{dsa.minimum_rate}</td>
+                                                <td>{dsa.maximum_rate}</td>
                                                 {/* <td>{formatToTwoDecimalPlaces(lattitude)}</td>
                                                 <td>{formatToTwoDecimalPlaces(longitude)}</td>
                                                 <td><button className="btn btn-primary" onClick={() => showLocationModel({ lattitude, longitude, location: property_address })}>Location</button></td> */}
