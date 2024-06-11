@@ -214,8 +214,8 @@ const DSAExport = () => {
                                         {/* <th>Location</th> */}
                                         <th>Rate Per Sqft</th>
                                         <th>Property Type</th>
-                                        <th>Maximum Rate</th>
                                         <th>Minimum Rate</th>
+                                        <th>Maximum Rate</th>
                                         {/* <th>Lattitude</th>
                                         <th>Longitude</th>
                                         <th></th> */}
