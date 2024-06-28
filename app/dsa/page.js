@@ -131,9 +131,8 @@ const DSAExport = () => {
     >
         <option hidden></option>
         <option value="G">Green</option>
-        <option value="R">Red</option>
         <option value="Y">Yellow</option>
-        <option value="B">Other</option>
+        <option value="R">Other</option>
 
     </select>
 </div>
@@ -214,8 +213,8 @@ const DSAExport = () => {
                                         {/* <th>Location</th> */}
                                         <th>Rate Per Sqft</th>
                                         <th>Property Type</th>
-                                        <th>Maximum Rate</th>
                                         <th>Minimum Rate</th>
+                                        <th>Maximum Rate</th>
                                         {/* <th>Lattitude</th>
                                         <th>Longitude</th>
                                         <th></th> */}
@@ -241,8 +240,8 @@ const DSAExport = () => {
                                                 {/* <td><p className='webkit-line-clamp'>{location}</p></td> */}
                                                 <td>{dsa.rate_per_sqft}</td>
                                                 <td>{dsa.property_type}</td>
-                                                <td>{dsa.maximum_rate}</td>
                                                 <td>{dsa.minimum_rate}</td>
+                                                <td>{dsa.maximum_rate}</td>
                                                 {/* <td>{formatToTwoDecimalPlaces(lattitude)}</td>
                                                 <td>{formatToTwoDecimalPlaces(longitude)}</td>
                                                 <td><button className="btn btn-primary" onClick={() => showLocationModel({ lattitude, longitude, location: property_address })}>Location</button></td> */}
