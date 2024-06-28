@@ -132,7 +132,7 @@ const DSAExport = () => {
         <option hidden></option>
         <option value="G">Green</option>
         <option value="Y">Yellow</option>
-        <option value="R">Other</option>
+        <option value="R">Red</option>
 
     </select>
 </div>
